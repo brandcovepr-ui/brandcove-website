@@ -15,3 +15,6 @@ out/
 
 # debug logs
 npm-debug.log*
+
+# design assets
+screenshots/
