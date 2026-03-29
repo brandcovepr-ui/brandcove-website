@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 const talentCards = [
   {
     id: 1,
@@ -75,28 +73,28 @@ function TalentCard({
   initials,
 }: (typeof talentCards)[0]) {
   return (
-    <div className="bg-white rounded-2xl p-4 shadow-sm border border-black/5 w-52 flex-shrink-0">
+    <div className="bg-white rounded-2xl p-4 shadow-sm border border-black/5 w-40 lg:w-64 flex-shrink-0">
       {/* Platform badge */}
       <span className="inline-block bg-cream text-gray-600 font-sans text-xs px-2.5 py-1 rounded-full mb-3">
         {platform}
       </span>
       {/* Avatar */}
       <div
-        className={`w-full h-32 ${bg} rounded-xl mb-3 flex items-center justify-center`}
+        className={`w-full h-20 lg:h-32 ${bg} rounded-xl mb-3 flex items-center justify-center`}
       >
-        <span className="font-serif text-2xl font-bold text-gray-500">
+        <span className="font-serif text-xl lg:text-2xl font-bold text-gray-500">
           {initials}
         </span>
       </div>
       {/* Info */}
-      <p className="font-sans font-semibold text-sm text-gray-900">{name}</p>
+      <p className="font-sans font-semibold text-xs lg:text-sm text-gray-900">{name}</p>
       <p className="font-sans text-xs text-gray-500 mb-2">{role}</p>
       <div className="flex items-center gap-1">
         <span className="text-amber-400 text-xs">★</span>
         <span className="font-sans text-xs font-medium text-gray-800">
           {rating}
         </span>
-        <span className="font-sans text-xs text-gray-400">
+        <span className="font-sans text-xs text-gray-400 hidden lg:inline">
           · {reviews} reviews
         </span>
       </div>
@@ -108,14 +106,16 @@ function ScrollColumn({
   cards,
   speed,
   offset,
+  className = "",
 }: {
   cards: typeof talentCards;
   speed: string;
   offset: boolean;
+  className?: string;
 }) {
   const doubled = [...cards, ...cards];
   return (
-    <div className="scroll-column overflow-hidden h-[520px] flex flex-col">
+    <div className={`scroll-column overflow-hidden flex-1 flex flex-col ${className}`}>
       <div
         className={`flex flex-col gap-4 ${speed} ${offset ? "mt-[-60px]" : ""}`}
         style={{ willChange: "transform" }}
@@ -133,16 +133,16 @@ export default function Hero() {
   const col2 = [...talentCards].reverse();
 
   return (
-    <section className="bg-cream min-h-screen flex items-center pt-24">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
+    <section className="bg-cream min-h-screen flex items-center overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* Left — copy */}
-        <div className="max-w-lg">
+        <div className="max-w-lg py-20 pt-32 flex flex-col items-center md:items-start">
           <span className="inline-block font-sans text-xs font-semibold tracking-widest text-maroon uppercase mb-6 border border-maroon/30 rounded-full px-3 py-1">
             Curated Creative Talent
           </span>
-          <h1 className="font-serif text-4xl lg:text-6xl font-bold text-gray-00 leading-tight mb-6">
+          <h1 className="font-editorial text-4xl lg:text-6xl font-normal text-gray-900 leading-tight mb-6">
             Hire the{" "}
-            <span className="font-script text-maroon italic">Talent</span> you
+            <span className="font-script text-rose italic">Talent</span> you
             need.
           </h1>
           <p className="font-sans text-base text-gray-600 leading-relaxed mb-10">
@@ -150,21 +150,26 @@ export default function Hero() {
             founder needs. Vetted talent. No noise. Just the right hire.
           </p>
           <button className="bg-maroon text-white font-sans font-medium px-7 py-3.5 rounded-full hover:bg-maroon/90 transition-colors text-sm">
-            Get started
+            Join as a founder
           </button>
         </div>
 
         {/* Right — scrolling talent cards */}
-        <div className="hidden lg:flex gap-4 justify-end overflow-hidden">
-          <ScrollColumn
-            cards={col1}
-            speed="animate-scroll-up"
-            offset={false}
-          />
+        <div
+          className="flex gap-2 justify-center lg:justify-end h-[400px] md:h-screen"
+          style={{
+            maskImage:
+              "linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%)",
+            WebkitMaskImage:
+              "linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%)",
+          }}
+        >
+          <ScrollColumn cards={col1} speed="animate-scroll-up" offset={false} />
           <ScrollColumn
             cards={col2}
             speed="animate-scroll-up-slow"
             offset={true}
+            className=""
           />
         </div>
       </div>

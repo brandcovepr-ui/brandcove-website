@@ -31,23 +31,23 @@ export default function HowItWorks() {
           <span className="inline-block font-sans text-xs font-semibold tracking-widest text-maroon uppercase mb-4 border border-maroon/30 rounded-full px-3 py-1">
             The Process
           </span>
-          <h2 className="font-serif text-4xl lg:text-5xl font-bold text-gray-900">
+          <h2 className="font-editorial text-4xl lg:text-5xl font-normal text-gray-900">
             Hire in{" "}
-            <span className="font-script text-maroon italic">three</span> steps.
+            <span className="font-script text-rose italic">three</span> steps.
           </h2>
         </div>
 
         {/* Step cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-0 mb-16">
           {steps.map((step) => (
             <div
               key={step.number}
               className={`${step.rotate} bg-white border-2 border-dashed border-gray-200 rounded-2xl p-8 transition-transform hover:rotate-0 duration-300`}
             >
-              <span className="font-serif text-5xl font-bold text-gray-100 block mb-4">
+              <span className="font-script text-5xl font-regular text-black block mb-4">
                 {step.number}
               </span>
-              <h3 className="font-serif text-xl font-bold text-gray-900 mb-3">
+              <h3 className="font-editorial text-xl font-regular text-gray-900 mb-3">
                 {step.title}
               </h3>
               <p className="font-sans text-sm text-gray-500 leading-relaxed">

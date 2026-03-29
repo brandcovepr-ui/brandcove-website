@@ -20,6 +20,32 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const editorial = localFont({
+  src: [
+    {
+      path: "../fonts/ppeditorial/PPEditorialNew-Regular-BF644b214ff145f.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../fonts/ppeditorial/PPEditorialNew-Italic-BF644b214fb0c0a.otf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../fonts/ppeditorial/PPEditorialNew-Ultrabold-BF644b21500840c.otf",
+      weight: "800",
+      style: "normal",
+    },
+    {
+      path: "../fonts/ppeditorial/PPEditorialNew-UltraboldItalic-BF644b214faef01.otf",
+      weight: "800",
+      style: "italic",
+    },
+  ],
+  variable: "--font-editorial",
+});
+
 export const metadata: Metadata = {
   title: "BrandCove — Hire the Creative Talent You Need",
   description:
@@ -34,7 +60,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${playfair.variable} ${dancing.variable} ${inter.variable} antialiased`}
+        className={`${playfair.variable} ${dancing.variable} ${inter.variable} ${editorial.variable} antialiased`}
       >
         {children}
       </body>

@@ -4,13 +4,15 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto bg-white rounded-xl shadow-md px-6 h-14 flex items-center justify-between">
         {/* Logo */}
         <span className="font-serif font-bold text-xl text-gray-900">
-          BrandCove.
+          <a href="/">
+            BrandCove.
+          </a>
         </span>
 
         {/* Nav links */}
         <div className="hidden md:flex items-center gap-8">
           <a
-            href="#creatives"
+            href="/creatives"
             className="font-sans text-sm text-gray-700 hover:text-gray-900 transition-colors"
           >
             For creatives
@@ -22,7 +24,7 @@ export default function Navbar() {
             How it works
           </a>
           <a
-            href="#pricing"
+            href="/pricing"
             className="font-sans text-sm text-gray-700 hover:text-gray-900 transition-colors"
           >
             Pricing

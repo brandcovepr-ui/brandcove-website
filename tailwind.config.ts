@@ -11,9 +11,11 @@ const config: Config = {
         cream: "#F5EFE6",
         maroon: "#5C1A28",
         "steel-blue": "#8AACBE",
+        rose: "#C25469",
       },
       fontFamily: {
         serif: ["var(--font-playfair)", "serif"],
+        editorial: ["var(--font-editorial)", "serif"],
         script: ["var(--font-dancing)", "cursive"],
         sans: ["var(--font-inter)", "sans-serif"],
       },

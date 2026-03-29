@@ -81,27 +81,27 @@ export default function TalentGrid() {
     <section id="creatives" className="bg-maroon py-28">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
-          <span className="inline-block font-sans text-xs font-semibold tracking-widest text-cream/70 uppercase mb-4 border border-cream/20 rounded-full px-3 py-1">
+        <div className="mb-10">
+          <span className="font-sans text-xs font-semibold tracking-widest text-cream/70 uppercase">
             The Core Six
           </span>
-          <h2 className="font-serif text-4xl lg:text-5xl font-bold text-white">
+          <h2 className="font-editorial text-4xl lg:text-5xl font-regular text-white mt-2">
             Discover our{" "}
-            <span className="font-script text-cream/80 italic">vetted</span>{" "}
+            <span className="font-script text-rose italic">vetted</span>{" "}
             creatives.
           </h2>
         </div>
 
         {/* Filter tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
+        <div className="flex flex-wrap gap-2 mb-10">
           {roles.map((role) => (
             <button
               key={role}
               onClick={() => setActiveRole(role)}
               className={`font-sans text-sm px-4 py-2 rounded-full border transition-colors ${
                 activeRole === role
-                  ? "bg-cream text-maroon border-cream"
-                  : "bg-transparent text-white border-white/20 hover:border-white/50"
+                  ? "bg-cream text-maroon border-cream font-medium"
+                  : "bg-transparent text-white/80 border-white/30 hover:border-white/60"
               }`}
             >
               {role}
@@ -110,36 +110,42 @@ export default function TalentGrid() {
         </div>
 
         {/* Talent grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {displayed.map((talent) => (
             <div
               key={talent.id}
-              className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors"
+              className="bg-white rounded-2xl p-5 flex border-[1px] border-dashed border-black flex-col gap-4"
             >
-              {/* Avatar */}
-              <div
-                className={`w-full h-44 ${talent.bg} rounded-xl mb-4 flex items-center justify-center`}
-              >
-                <span className="font-serif text-4xl font-bold text-gray-500">
-                  {talent.initials}
-                </span>
+              {/* Card header: avatar + name/role */}
+              <div className="flex items-center gap-4">
+                <div
+                  className={`w-20 h-20 shrink-0 ${talent.bg} rounded-xl flex items-center justify-center`}
+                >
+                  <span className="font-serif text-2xl font-bold text-gray-500">
+                    {talent.initials}
+                  </span>
+                </div>
+                <div>
+                  <p className="font-editorial font-semibold text-gray-900 text-base leading-tight">
+                    {talent.name}
+                  </p>
+                  <p className="font-sans text-xs text-gray-400 uppercase tracking-wider mt-0.5">
+                    {talent.role}
+                  </p>
+                </div>
               </div>
-              {/* Info */}
-              <p className="font-sans font-semibold text-white text-base">
-                {talent.name}
-              </p>
-              <p className="font-sans text-xs text-white/50 uppercase tracking-wider mb-2">
-                {talent.role}
-              </p>
-              <p className="font-sans text-sm text-white/70 leading-relaxed mb-4">
+
+              {/* Description */}
+              <p className="font-sans text-sm text-gray-600 leading-relaxed">
                 {talent.description}
               </p>
+
               {/* Tags */}
               <div className="flex flex-wrap gap-2">
                 {talent.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="font-sans text-xs bg-white/10 text-white/80 px-2.5 py-1 rounded-full"
+                    className="font-sans text-xs border border-gray-300 text-gray-500 px-3 py-1 rounded-full"
                   >
                     {tag}
                   </span>
