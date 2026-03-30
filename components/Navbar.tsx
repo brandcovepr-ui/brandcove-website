@@ -13,11 +13,11 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-4 left-0 right-0 z-50 px-4 lg:px-8">
-      <div className="max-w-7xl mx-auto bg-white rounded-xl shadow-md px-6">
+      <div className="max-w-7xl mx-auto bg-[#FFFFFF] rounded-xl shadow-md px-6">
         {/* Main bar */}
         <div className="h-14 flex items-center justify-between">
           {/* Logo */}
-          <span className="font-serif font-bold text-xl text-gray-900">
+          <span className="font-serif font-bold text-xl text-black">
             <a href="/">BrandCove.</a>
           </span>
 
@@ -27,7 +27,7 @@ export default function Navbar() {
               <a
                 key={l.href}
                 href={l.href}
-                className="font-sans text-sm text-gray-700 hover:text-gray-900 transition-colors"
+                className="font-sans text-sm text-black/70 hover:text-black transition-colors"
               >
                 {l.label}
               </a>
@@ -47,17 +47,17 @@ export default function Navbar() {
               aria-label="Toggle menu"
             >
               <span
-                className={`block h-0.5 w-5 bg-gray-900 transition-transform duration-200 ${
+                className={`block h-0.5 w-5 bg-white transition-transform duration-200 ${
                   open ? "translate-y-2 rotate-45" : ""
                 }`}
               />
               <span
-                className={`block h-0.5 w-5 bg-gray-900 transition-opacity duration-200 ${
+                className={`block h-0.5 w-5 bg-white transition-opacity duration-200 ${
                   open ? "opacity-0" : ""
                 }`}
               />
               <span
-                className={`block h-0.5 w-5 bg-gray-900 transition-transform duration-200 ${
+                className={`block h-0.5 w-5 bg-white transition-transform duration-200 ${
                   open ? "-translate-y-2 -rotate-45" : ""
                 }`}
               />
@@ -67,13 +67,13 @@ export default function Navbar() {
 
         {/* Mobile menu */}
         {open && (
-          <div className="md:hidden border-t border-gray-100 py-4 flex flex-col gap-1">
+          <div className="md:hidden border-t border-white/10 py-4 flex flex-col gap-1">
             {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="font-sans text-sm text-gray-700 hover:text-gray-900 transition-colors px-2 py-2.5 rounded-lg hover:bg-gray-50"
+                className="font-sans text-sm text-white/70 hover:text-white transition-colors px-2 py-2.5 rounded-lg hover:bg-white/10"
               >
                 {l.label}
               </a>

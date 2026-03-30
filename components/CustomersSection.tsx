@@ -38,48 +38,83 @@ export default function CustomersSection() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="mb-12">
-          <span className="font-sans text-xs font-semibold tracking-widest text-maroon/60 uppercase">
+          <span className="font-sans text-xs font-semibold tracking-widest text-[#DC516B] uppercase">
             Customers
           </span>
-          <h2 className="font-editorial text-4xl lg:text-5xl font-regular text-gray-900 mt-2">
+          <h2 className="font-editorial text-4xl lg:text-5xl font-regular text-gray-900 mt-2 tracking-tight">
             Founders{" "}
             <span className="font-script text-rose italic">love</span>{" "}
             BrandCove.
           </h2>
         </div>
 
-        {/* Testimonial cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-          {testimonials.map((t) => (
-            <div
-              key={t.id}
-              className={`rounded-2xl p-6 flex flex-col justify-between gap-8 ${
-                t.featured
-                  ? "bg-white border border-black/10 shadow-sm"
-                  : "bg-white/60 border border-black/5"
-              }`}
-            >
-              <p className="font-sans text-sm text-gray-600 leading-relaxed">
-                {t.quote}
-              </p>
-
-              <div className="flex items-center gap-3">
-                <div
-                  className={`w-9 h-9 rounded-full ${t.bg} flex items-center justify-center shrink-0`}
-                >
-                  <span className="font-serif text-xs font-bold text-gray-500">
-                    {t.initials}
-                  </span>
-                </div>
-                <div>
-                  <p className="font-sans text-sm font-semibold text-gray-900 leading-tight">
-                    {t.name}
-                  </p>
-                  <p className="font-sans text-xs text-gray-400">{t.handle}</p>
-                </div>
+        {/* Testimonial cards — different sizes */}
+        <div className="flex flex-col sm:flex-row gap-5 items-stretch">
+          {/* Small card */}
+          <div className="flex-none sm:w-[28%] bg-white border border-maroon/30 rounded-2xl p-6 flex flex-col justify-between gap-8 shadow-sm">
+            <p className="font-sans text-sm text-gray-600 leading-relaxed">
+              {testimonials[0].quote}
+            </p>
+            <div className="flex items-center gap-3">
+              <div
+                className={`w-9 h-9 rounded-full ${testimonials[0].bg} flex items-center justify-center shrink-0`}
+              >
+                <span className="font-serif text-xs font-bold text-gray-500">
+                  {testimonials[0].initials}
+                </span>
+              </div>
+              <div>
+                <p className="font-sans text-sm font-semibold text-gray-900 leading-tight">
+                  {testimonials[0].name}
+                </p>
+                <p className="font-sans text-xs text-gray-400">{testimonials[0].handle}</p>
               </div>
             </div>
-          ))}
+          </div>
+
+          {/* Featured large card */}
+          <div className="flex-1 bg-white border border-maroon/40 rounded-2xl p-10 flex flex-col justify-between gap-10 shadow-xl">
+            <p className="font-sans text-base text-gray-700 leading-relaxed">
+              {testimonials[1].quote}
+            </p>
+            <div className="flex items-center gap-3">
+              <div
+                className={`w-11 h-11 rounded-full ${testimonials[1].bg} flex items-center justify-center shrink-0`}
+              >
+                <span className="font-serif text-sm font-bold text-gray-500">
+                  {testimonials[1].initials}
+                </span>
+              </div>
+              <div>
+                <p className="font-sans text-sm font-semibold text-gray-900 leading-tight">
+                  {testimonials[1].name}
+                </p>
+                <p className="font-sans text-xs text-gray-400">{testimonials[1].handle}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Medium card */}
+          <div className="flex-none sm:w-[28%] bg-white border border-maroon/30 rounded-2xl p-6 flex flex-col justify-between gap-8 shadow-md">
+            <p className="font-sans text-sm text-gray-600 leading-relaxed">
+              {testimonials[2].quote}
+            </p>
+            <div className="flex items-center gap-3">
+              <div
+                className={`w-9 h-9 rounded-full ${testimonials[2].bg} flex items-center justify-center shrink-0`}
+              >
+                <span className="font-serif text-xs font-bold text-gray-500">
+                  {testimonials[2].initials}
+                </span>
+              </div>
+              <div>
+                <p className="font-sans text-sm font-semibold text-gray-900 leading-tight">
+                  {testimonials[2].name}
+                </p>
+                <p className="font-sans text-xs text-gray-400">{testimonials[2].handle}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

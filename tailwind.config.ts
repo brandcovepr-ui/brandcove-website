@@ -18,6 +18,7 @@ const config: Config = {
         editorial: ["var(--font-editorial)", "serif"],
         script: ["var(--font-dancing)", "cursive"],
         sans: ["var(--font-inter)", "sans-serif"],
+        poppins: ["var(--font-poppins)", "sans-serif"],
       },
       keyframes: {
         "scroll-up": {

@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 const roles = [
-  "Graphic Designer",
+  "Operations Manager",
   "Social Media Manager",
   "Web Designer",
   "Customer Service",
@@ -24,7 +24,7 @@ const talents = [
   {
     id: 2,
     name: "Jordan K.",
-    role: "Graphic Designer",
+    role: "Operations Manager",
     description: "Designed brand identities for 20+ startups across SaaS and e-commerce.",
     tags: ["Figma", "Branding", "Print"],
     bg: "bg-rose-200",
@@ -69,7 +69,7 @@ const talents = [
 ];
 
 export default function TalentGrid() {
-  const [activeRole, setActiveRole] = useState("Graphic Designer");
+  const [activeRole, setActiveRole] = useState("Operations Manager");
 
   const filtered = activeRole
     ? talents.filter((t) => t.role === activeRole)
@@ -82,7 +82,7 @@ export default function TalentGrid() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="mb-10">
-          <span className="font-sans text-xs font-semibold tracking-widest text-cream/70 uppercase">
+          <span className="font-sans text-xs font-semibold tracking-widest text-[#DC516B] uppercase">
             The Core Six
           </span>
           <h2 className="font-editorial text-4xl lg:text-5xl font-regular text-white mt-2">
@@ -114,7 +114,7 @@ export default function TalentGrid() {
           {displayed.map((talent) => (
             <div
               key={talent.id}
-              className="bg-white rounded-2xl p-5 flex border-[1px] border-dashed border-black flex-col gap-4"
+              className="bg-white rounded-2xl p-5 flex border-[1px] border-dashed border-maroon flex-col gap-4"
             >
               {/* Card header: avatar + name/role */}
               <div className="flex items-center gap-4">
@@ -136,7 +136,7 @@ export default function TalentGrid() {
               </div>
 
               {/* Description */}
-              <p className="font-sans text-sm text-gray-600 leading-relaxed">
+              <p className="font-sans text-sm text-[#111111] leading-relaxed">
                 {talent.description}
               </p>
 

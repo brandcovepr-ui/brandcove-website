@@ -28,7 +28,7 @@ export default function HowItWorks() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-20">
-          <span className="inline-block font-sans text-xs font-semibold tracking-widest text-maroon uppercase mb-4 border border-maroon/30 rounded-full px-3 py-1">
+          <span className="inline-block font-sans text-xs font-semibold tracking-widest text-[#DC516B] uppercase mb-4">
             The Process
           </span>
           <h2 className="font-editorial text-4xl lg:text-5xl font-normal text-gray-900">
@@ -38,11 +38,14 @@ export default function HowItWorks() {
         </div>
 
         {/* Step cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-0 mb-16">
-          {steps.map((step) => (
+        <div className="flex flex-col md:flex-row md:items-start mb-16 relative">
+          {steps.map((step, index) => (
             <div
               key={step.number}
-              className={`${step.rotate} bg-white border-2 border-dashed border-gray-200 rounded-2xl p-8 transition-transform hover:rotate-0 duration-300`}
+              className={`${step.rotate} bg-white border-2 border-dashed border-maroon/40 rounded-2xl p-8 transition-transform hover:rotate-0 duration-300 flex-1 ${
+                index > 0 ? "md:-ml-10" : ""
+              }`}
+              style={{ zIndex: index + 1 }}
             >
               <span className="font-script text-5xl font-regular text-black block mb-4">
                 {step.number}
@@ -59,7 +62,7 @@ export default function HowItWorks() {
 
         {/* CTA */}
         <div className="text-center">
-          <button className="border-2 border-maroon text-maroon font-sans font-medium px-7 py-3.5 rounded-full hover:bg-maroon hover:text-white transition-colors text-sm">
+          <button className="bg-maroon text-white font-sans font-medium px-7 py-3.5 rounded-full border-2 border-maroon hover:bg-transparent hover:text-maroon transition-colors text-sm">
             Find your next talents
           </button>
         </div>

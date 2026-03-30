@@ -14,7 +14,7 @@ const talentCards = [
   {
     id: 2,
     name: "Jordan K.",
-    role: "Graphic Designer",
+    role: "Operations Manager",
     platform: "Behance",
     rating: 4.9,
     reviews: 31,
@@ -137,10 +137,10 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* Left — copy */}
         <div className="max-w-lg py-20 pt-32 flex flex-col items-center md:items-start">
-          <span className="inline-block font-sans text-xs font-semibold tracking-widest text-maroon uppercase mb-6 border border-maroon/30 rounded-full px-3 py-1">
+          <span className="inline-block font-sans text-xs font-semibold tracking-widest text-[#DC516B] uppercase mb-6">
             Curated Creative Talent
           </span>
-          <h1 className="font-editorial text-4xl lg:text-6xl font-normal text-gray-900 leading-tight mb-6">
+          <h1 className="font-editorial text-4xl lg:text-6xl font-normal text-gray-900 leading-tight tracking-tight mb-6">
             Hire the{" "}
             <span className="font-script text-rose italic">Talent</span> you
             need.

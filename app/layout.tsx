@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Playfair_Display, Inter, Poppins } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -18,6 +18,12 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   variable: "--font-inter",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-poppins",
 });
 
 const editorial = localFont({
@@ -60,7 +66,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${playfair.variable} ${dancing.variable} ${inter.variable} ${editorial.variable} antialiased`}
+        className={`${playfair.variable} ${dancing.variable} ${inter.variable} ${editorial.variable} ${poppins.variable} antialiased`}
       >
         {children}
       </body>
