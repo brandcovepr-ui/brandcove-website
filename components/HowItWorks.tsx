@@ -4,21 +4,21 @@ const steps = [
     title: "Browse Curated Talent",
     description:
       "Explore our hand-picked roster of vetted creatives across six essential roles. Every profile is reviewed before going live.",
-    rotate: "-rotate-2",
+    rotate: "md:-rotate-[8deg]",
   },
   {
     number: "02",
     title: "Review Their Profile",
     description:
       "Dig into portfolios, past results, skill tags, and verified ratings from founders just like you.",
-    rotate: "rotate-0",
+    rotate: "md:rotate-0",
   },
   {
     number: "03",
     title: "Send an Inquiry",
     description:
       "Reach out directly. No middlemen, no bidding wars — just a simple message to kick things off.",
-    rotate: "rotate-2",
+    rotate: "md:rotate-[8deg]",
   },
 ];
 
@@ -38,11 +38,11 @@ export default function HowItWorks() {
         </div>
 
         {/* Step cards */}
-        <div className="flex flex-col md:flex-row md:items-start mb-16 relative">
+        <div className="flex flex-col items-center md:flex-row md:items-center md:justify-center mb-16 relative gap-6 md:gap-0">
           {steps.map((step, index) => (
             <div
               key={step.number}
-              className={`${step.rotate} bg-white border-2 border-dashed border-maroon/40 rounded-2xl p-8 transition-transform hover:rotate-0 duration-300 flex-1 ${
+              className={`${step.rotate} bg-white border-2 border-dashed border-maroon/40 rounded-2xl p-8 transition-transform hover:rotate-0 duration-300 shrink-0 w-full max-w-sm md:w-[387px] md:h-[306px] md:max-w-none ${
                 index > 0 ? "md:-ml-10" : ""
               }`}
               style={{ zIndex: index + 1 }}

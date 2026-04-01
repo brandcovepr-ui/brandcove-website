@@ -3,9 +3,10 @@
 import { useState } from "react";
 
 const links = [
-  { label: "For creatives", href: "/creatives" },
-  { label: "How it works", href: "#how-it-works" },
+  { label: "For talents", href: "/creatives" },
+  { label: "About us", href: "/about-us" },
   { label: "Pricing", href: "/pricing" },
+  { label: "Contact us", href: "/contact-us" },
 ];
 
 export default function Navbar() {
@@ -17,7 +18,7 @@ export default function Navbar() {
         {/* Main bar */}
         <div className="h-14 flex items-center justify-between">
           {/* Logo */}
-          <span className="font-serif font-bold text-xl text-black">
+          <span className="font-serif font-regular text-2xl text-black">
             <a href="/">BrandCove.</a>
           </span>
 
@@ -27,7 +28,7 @@ export default function Navbar() {
               <a
                 key={l.href}
                 href={l.href}
-                className="font-sans text-sm text-black/70 hover:text-black transition-colors"
+                className="font-sans text-sm text-black/90 hover:text-black transition-colors"
               >
                 {l.label}
               </a>
@@ -47,17 +48,17 @@ export default function Navbar() {
               aria-label="Toggle menu"
             >
               <span
-                className={`block h-0.5 w-5 bg-white transition-transform duration-200 ${
+                className={`block h-0.5 w-5 bg-black transition-transform duration-200 ${
                   open ? "translate-y-2 rotate-45" : ""
                 }`}
               />
               <span
-                className={`block h-0.5 w-5 bg-white transition-opacity duration-200 ${
+                className={`block h-0.5 w-5 bg-black transition-opacity duration-200 ${
                   open ? "opacity-0" : ""
                 }`}
               />
               <span
-                className={`block h-0.5 w-5 bg-white transition-transform duration-200 ${
+                className={`block h-0.5 w-5 bg-black transition-transform duration-200 ${
                   open ? "-translate-y-2 -rotate-45" : ""
                 }`}
               />
@@ -67,13 +68,13 @@ export default function Navbar() {
 
         {/* Mobile menu */}
         {open && (
-          <div className="md:hidden border-t border-white/10 py-4 flex flex-col gap-1">
+          <div className="md:hidden border-t border-gray-200 py-4 flex flex-col gap-1">
             {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="font-sans text-sm text-white/70 hover:text-white transition-colors px-2 py-2.5 rounded-lg hover:bg-white/10"
+                className="font-sans text-sm text-black/70 hover:text-black transition-colors px-2 py-2.5 rounded-lg hover:bg-gray-100"
               >
                 {l.label}
               </a>

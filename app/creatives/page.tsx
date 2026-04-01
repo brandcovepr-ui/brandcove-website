@@ -13,21 +13,21 @@ const steps = [
     title: "Submit your application",
     description:
       "Tell us about your craft, your experience, and the kind of brands you want to work with. Takes less than 5 minutes.",
-    rotate: "-rotate-2",
+    rotate: "md:-rotate-[8deg]",
   },
   {
     number: "02",
     title: "Get vetted by our team",
     description:
       "We review every application manually. If you're a fit, you'll hear back within 3 business days.",
-    rotate: "rotate-0",
+    rotate: "md:rotate-0",
   },
   {
     number: "03",
     title: "Start getting hired",
     description:
       "Your profile goes live and founders start reaching out. You choose who you work with.",
-    rotate: "rotate-2",
+    rotate: "md:rotate-[8deg]",
   },
 ];
 
@@ -72,7 +72,7 @@ const faqs = [
   },
   {
     q: "What roles do you accept?",
-    a: "We currently accept Graphic Designers, Social Media Managers, Web Designers, Customer Service Specialists, Sales Representatives, and Creative Assistants.",
+    a: "We currently accept Operations Managers, Social Media Managers, Web Designers, Customer Service Specialists, Sales Representatives, and Creative Assistants.",
   },
   {
     q: "Can I be on BrandCove and other platforms?",
@@ -99,15 +99,31 @@ function FAQItem({ q, a }: { q: string; a: string }) {
         <span className="font-editorial text-base lg:text-lg text-gray-900">
           {q}
         </span>
-        <span className="text-gray-400 text-xl shrink-0 leading-none">
-          {open ? "−" : "+"}
-        </span>
+        <svg
+          className={`shrink-0 text-gray-400 transition-transform duration-300 ${
+            open ? "rotate-180" : ""
+          }`}
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
       </button>
-      {open && (
-        <p className="font-sans text-sm text-gray-500 leading-relaxed mt-3 max-w-2xl">
+      <div
+        className={`overflow-hidden transition-all duration-300 ${
+          open ? "max-h-40 mt-3" : "max-h-0"
+        }`}
+      >
+        <p className="font-sans text-sm text-gray-500 leading-relaxed max-w-2xl">
           {a}
         </p>
-      )}
+      </div>
     </div>
   );
 }
@@ -119,13 +135,13 @@ export default function CreativesPage() {
 
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section className="bg-cream overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch min-h-screen">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-0 md:gap-12 items-stretch mt-24">
           {/* Left */}
-          <div className="max-w-lg py-20 pt-32 flex flex-col justify-center">
-            <span className="inline-block font-sans text-xs font-semibold tracking-widest text-maroon/60 uppercase mb-6 border border-maroon/20 rounded-full px-3 py-1 w-fit">
+          <div className="max-w-lg pt-4 md:pt-0 py-0 md:py-10 md:py-32 flex flex-col items-center md:items-start text-center md:text-left justify-center">
+            <span className="inline-block font-sans text-center md:text-left text-xs font-semibold tracking-widest text-maroon/60 uppercase mb-6 w-fit">
               For Creatives
             </span>
-            <h1 className="font-editorial text-4xl lg:text-6xl font-normal text-black leading-tight">
+            <h1 className="font-editorial text-center md:text-left text-4xl lg:text-6xl font-normal text-black leading-tight">
               Get{" "}
               <span className="font-script text-rose italic">Paid</span>
             </h1>
@@ -141,24 +157,26 @@ export default function CreativesPage() {
             </button>
           </div>
 
-          {/* Right — hero image: half screen on desktop, full width on mobile */}
-          <div className="relative w-full h-[80vh] lg:h-auto">
-            <Image
-              src={CreativesHero}
-              alt="Creative professional"
-              fill
-              className="object-cover object-top"
-              priority
-            />
+          {/* Right — hero image */}
+          <div className="flex items-center justify-center pt-0 md:pt-8 md:pt-28 lg:pt-0">
+            <div className="relative w-full max-w-[480px] h-[480px] lg:h-[560px]">
+              <Image
+                src={CreativesHero}
+                alt="Creative professional"
+                fill
+                className="object-contain object-center"
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>
 
       {/* ── From apply to hired ──────────────────────────────────────────── */}
-      <section className="bg-cream py-28">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center align center flex-col">
-          <div className="mb-20">
-            <span className="font-sans text-xs font-semibold tracking-widest text-maroon/60 text-center uppercase">
+      <section className="bg-cream pb-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center flex-col">
+          <div className="mb-20 text-center">
+            <span className="font-sans text-xs font-semibold tracking-widest text-maroon/60 uppercase">
               The Process
             </span>
             <h2 className="font-editorial text-4xl lg:text-5xl font-normal text-gray-900 mt-2">
@@ -167,11 +185,14 @@ export default function CreativesPage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-0 mb-16">
-            {steps.map((step) => (
+          <div className="flex flex-col items-center md:flex-row md:items-center md:justify-center mb-16 relative gap-6 md:gap-0">
+            {steps.map((step, index) => (
               <div
                 key={step.number}
-                className={`${step.rotate} bg-white border-2 border-dashed border-gray-200 rounded-2xl p-8 transition-transform hover:rotate-0 duration-300`}
+                className={`${step.rotate} bg-white border-2 border-dashed border-maroon/40 rounded-2xl p-8 transition-transform hover:rotate-0 duration-300 shrink-0 w-full max-w-sm md:w-[387px] md:h-[306px] md:max-w-none ${
+                  index > 0 ? "md:-ml-10" : ""
+                }`}
+                style={{ zIndex: index + 1 }}
               >
                 <span className="font-script text-5xl text-black block mb-4">
                   {step.number}
@@ -187,8 +208,8 @@ export default function CreativesPage() {
           </div>
 
           <div>
-            <button className="border-2 border-maroon text-maroon font-sans font-medium px-7 py-3.5 rounded-full hover:bg-maroon hover:text-white transition-colors text-sm">
-              Apply as a creative
+            <button className="bg-maroon text-white font-sans font-medium px-7 py-3.5 rounded-full border-2 border-maroon hover:bg-transparent hover:text-maroon transition-colors text-sm">
+              Find your next role
             </button>
           </div>
         </div>
@@ -199,12 +220,12 @@ export default function CreativesPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-16">
             {/* Left — sticky heading */}
-            <div className="lg:w-72 shrink-0">
+            <div className="lg:w-80 shrink-0">
               <div className="lg:sticky lg:top-32">
                 <span className="font-sans text-xs font-semibold tracking-widest text-cream/60 uppercase">
                   Why BrandCove
                 </span>
-                <h2 className="font-editorial text-4xl lg:text-5xl font-normal text-white mt-2">
+                <h2 className="font-editorial text-4xl lg:text-5xl font-normal text-white mt-2 whitespace-nowrap">
                   Built for{" "}
                   <span className="font-script text-rose italic">
                     Creatives.
@@ -218,7 +239,7 @@ export default function CreativesPage() {
               {features.map((f) => (
                 <div
                   key={f.title}
-                  className="bg-white rounded-2xl px-8 py-6"
+                  className="bg-white border-2 border-dashed border-maroon/40 rounded-2xl px-8 py-6"
                 >
                   <h3 className="font-editorial text-xl text-gray-900 mb-2">
                     {f.title}
@@ -257,15 +278,16 @@ export default function CreativesPage() {
       <section className="bg-cream py-28">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="bg-steel-blue rounded-3xl px-10 py-20 text-center">
-            <h2 className="font-editorial text-4xl lg:text-5xl font-normal text-black max-w-2xl mx-auto leading-tight ">
-              Let's find {" "}
+            <h2 className="font-editorial text-4xl lg:text-5xl font-normal text-black max-w-2xl mx-auto leading-tight">
+              Let&apos;s find{" "}
             </h2>
             <h2 className="font-editorial text-4xl lg:text-5xl font-normal text-black max-w-2xl mx-auto leading-tight">
               your next
-              <span className="font-script italic text-white"> role</span>{" "}
-              
+              <span className="font-script italic text-white"> role</span>
             </h2>
-            <p className="font-sans text-sm text-black/60 leading-relaxed mb-10">Explore a wide range of opportunities now available</p>
+            <p className="font-sans text-sm text-black/60 leading-relaxed mb-10">
+              Explore a wide range of opportunities now available
+            </p>
             <button className="bg-maroon text-white font-sans font-medium px-8 py-3.5 rounded-full hover:bg-maroon/90 transition-colors text-sm">
               Get started
             </button>

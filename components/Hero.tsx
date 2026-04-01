@@ -134,7 +134,7 @@ export default function Hero() {
 
   return (
     <section className="bg-cream min-h-screen flex items-center overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
         {/* Left — copy */}
         <div className="max-w-lg py-20 pt-32 flex flex-col items-center md:items-start">
           <span className="inline-block font-sans text-xs font-semibold tracking-widest text-[#DC516B] uppercase mb-6">
@@ -156,7 +156,7 @@ export default function Hero() {
 
         {/* Right — scrolling talent cards */}
         <div
-          className="flex gap-2 justify-center lg:justify-end h-[400px] md:h-screen"
+          className="flex gap-2 justify-center items-center h-[340px] lg:h-screen"
           style={{
             maskImage:
               "linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%)",

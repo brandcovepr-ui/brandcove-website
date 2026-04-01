@@ -21,8 +21,8 @@ export default function PricingPage() {
     <main>
       <Navbar />
 
-      <section className="bg-cream min-h-screen flex flex-col items-center justify-center px-6 pt-32 pb-28">
-        <h1 className="font-editorial text-5xl lg:text-7xl text-gray-900 mb-16">
+      <section className="bg-cream flex flex-col items-center justify-center px-6 pt-32 pb-16">
+        <h1 className="font-editorial text-5xl lg:text-7xl text-gray-900 mb-12">
           Pricing.
         </h1>
 
@@ -30,18 +30,18 @@ export default function PricingPage() {
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className="bg-white border-2 border-dashed border-gray-200 rounded-2xl p-8 flex flex-col gap-6"
+              className="bg-white border-2 border-dashed border-gray-200 rounded-lg p-8 flex flex-col gap-0"
             >
-              <div>
-                <h2 className="font-editorial text-2xl text-gray-900 mb-2">
+              <div className="pb-5 border-b border-gray-200 mb-5">
+                <h2 className="font-editorial text-2xl text-gray-900">
                   {plan.name}
                 </h2>
-                <p className="font-sans text-sm text-gray-500">
+                <p className="font-sans text-sm text-gray-500 mt-1">
                   {plan.description}
                 </p>
               </div>
 
-              <div>
+              <div className="mb-6">
                 <p className="font-editorial text-4xl text-gray-900">
                   {plan.price}
                 </p>
