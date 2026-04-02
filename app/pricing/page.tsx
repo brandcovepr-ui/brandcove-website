@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import FadeIn from "@/components/FadeIn";
 
 const plans = [
   {
@@ -22,38 +23,39 @@ export default function PricingPage() {
       <Navbar />
 
       <section className="bg-cream flex flex-col items-center justify-center px-6 pt-32 pb-16">
-        <h1 className="font-editorial text-5xl lg:text-7xl text-gray-900 mb-12">
-          Pricing.
-        </h1>
+        <FadeIn>
+          <h1 className="font-editorial text-5xl lg:text-7xl text-gray-900 mb-12">
+            Pricing.
+          </h1>
+        </FadeIn>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl">
-          {plans.map((plan) => (
-            <div
-              key={plan.name}
-              className="bg-white border-2 border-dashed border-gray-200 rounded-lg p-8 flex flex-col gap-0"
-            >
-              <div className="pb-5 border-b border-gray-200 mb-5">
-                <h2 className="font-editorial text-2xl text-gray-900">
-                  {plan.name}
-                </h2>
-                <p className="font-sans text-sm text-gray-500 mt-1">
-                  {plan.description}
-                </p>
-              </div>
+          {plans.map((plan, index) => (
+            <FadeIn key={plan.name} delay={0.1 + index * 0.1}>
+              <div className="bg-white border-2 border-dashed border-gray-200 rounded-lg p-8 flex flex-col gap-0">
+                <div className="pb-5 border-b border-gray-200 mb-5">
+                  <h2 className="font-editorial text-2xl text-gray-900">
+                    {plan.name}
+                  </h2>
+                  <p className="font-sans text-sm text-gray-500 mt-1">
+                    {plan.description}
+                  </p>
+                </div>
 
-              <div className="mb-6">
-                <p className="font-editorial text-4xl text-gray-900">
-                  {plan.price}
-                </p>
-                <p className="font-sans text-xs text-gray-400 mt-1">
-                  {plan.period}
-                </p>
-              </div>
+                <div className="mb-6">
+                  <p className="font-editorial text-4xl text-gray-900">
+                    {plan.price}
+                  </p>
+                  <p className="font-sans text-xs text-gray-400 mt-1">
+                    {plan.period}
+                  </p>
+                </div>
 
-              <button className="w-full border-2 border-gray-900 text-gray-900 font-sans text-sm font-medium py-3 rounded-full hover:bg-gray-900 hover:text-white transition-colors tracking-widest uppercase">
-                Sign up
-              </button>
-            </div>
+                <button className="w-full border-2 border-gray-900 text-gray-900 font-sans text-sm font-medium py-3 rounded-full hover:bg-gray-900 hover:text-white transition-colors tracking-widest uppercase">
+                  Sign up
+                </button>
+              </div>
+            </FadeIn>
           ))}
         </div>
       </section>

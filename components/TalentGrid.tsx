@@ -1,21 +1,22 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const roles = [
   "Operations Manager",
   "Social Media Manager",
-  "Web Designer",
-  "Customer Service",
+  "Graphics Designer",
+  "Customer Service Specialist",
   "Sales Representative",
-  "Creative Assistant",
+  "Marketing Associate",
 ];
 
 const talents = [
   {
     id: 1,
     name: "Amara M.",
-    role: "Web Designer",
+    role: "Graphics Designer",
     description: "Grew three DTC brands from 0 to 50K followers in under 8 months.",
     tags: ["Instagram", "TikTok", "Growth"],
     bg: "bg-amber-200",
@@ -81,7 +82,13 @@ export default function TalentGrid() {
     <section id="creatives" className="bg-maroon py-28">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-10">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mb-10"
+        >
           <span className="font-sans text-xs font-semibold tracking-widest text-[#DC516B] uppercase">
             The Core Six
           </span>
@@ -90,10 +97,16 @@ export default function TalentGrid() {
             <span className="font-script text-rose italic">vetted</span>{" "}
             creatives.
           </h2>
-        </div>
+        </motion.div>
 
         {/* Filter tabs */}
-        <div className="flex flex-wrap gap-2 mb-10">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+          className="flex flex-wrap gap-2 mb-10"
+        >
           {roles.map((role) => (
             <button
               key={role}
@@ -107,52 +120,59 @@ export default function TalentGrid() {
               {role}
             </button>
           ))}
-        </div>
+        </motion.div>
 
         {/* Talent grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {displayed.map((talent) => (
-            <div
-              key={talent.id}
-              className="bg-white rounded-2xl p-5 flex border-[1px] border-dashed border-maroon flex-col gap-4"
-            >
-              {/* Card header: avatar + name/role */}
-              <div className="flex items-center gap-4">
-                <div
-                  className={`w-20 h-20 shrink-0 ${talent.bg} rounded-xl flex items-center justify-center`}
-                >
-                  <span className="font-serif text-2xl font-bold text-gray-500">
-                    {talent.initials}
-                  </span>
-                </div>
-                <div>
-                  <p className="font-editorial font-semibold text-gray-900 text-base leading-tight">
-                    {talent.name}
-                  </p>
-                  <p className="font-sans text-xs text-gray-400 uppercase tracking-wider mt-0.5">
-                    {talent.role}
-                  </p>
-                </div>
-              </div>
-
-              {/* Description */}
-              <p className="font-sans text-sm text-[#111111] leading-relaxed">
-                {talent.description}
-              </p>
-
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2">
-                {talent.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="font-sans text-xs border border-gray-300 text-gray-500 px-3 py-1 rounded-full"
+          <AnimatePresence mode="popLayout">
+            {displayed.map((talent, index) => (
+              <motion.div
+                key={talent.id}
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10, scale: 0.97 }}
+                transition={{ duration: 0.35, ease: "easeOut", delay: index * 0.06 }}
+                className="bg-white rounded-2xl p-5 flex border-[1px] border-dashed border-maroon flex-col gap-4"
+              >
+                {/* Card header: avatar + name/role */}
+                <div className="flex items-center gap-4">
+                  <div
+                    className={`w-20 h-20 shrink-0 ${talent.bg} rounded-xl flex items-center justify-center`}
                   >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
+                    <span className="font-serif text-2xl font-bold text-gray-500">
+                      {talent.initials}
+                    </span>
+                  </div>
+                  <div>
+                    <p className="font-editorial font-regular text-gray-900 text-base leading-tight">
+                      {talent.name}
+                    </p>
+                    <p className="font-sans text-xs text-gray-400 uppercase tracking-wider mt-0.5">
+                      {talent.role}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Description */}
+                <p className="font-sans text-sm text-[#111111] leading-relaxed">
+                  {talent.description}
+                </p>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2">
+                  {talent.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="font-sans text-xs rounded-[4px] text-maroon px-3 py-1 rounded-full bg-[#F7F3ED]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
       </div>
     </section>

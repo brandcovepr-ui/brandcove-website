@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 const steps = [
   {
     number: "01",
@@ -27,7 +31,13 @@ export default function HowItWorks() {
     <section id="how-it-works" className="bg-cream py-28">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center mb-20"
+        >
           <span className="inline-block font-sans text-xs font-semibold tracking-widest text-[#DC516B] uppercase mb-4">
             The Process
           </span>
@@ -35,7 +45,7 @@ export default function HowItWorks() {
             Hire in{" "}
             <span className="font-script text-rose italic">three</span> steps.
           </h2>
-        </div>
+        </motion.div>
 
         {/* Step cards */}
         <div className="flex flex-col items-center md:flex-row md:items-center md:justify-center mb-16 relative gap-6 md:gap-0">
@@ -61,11 +71,21 @@ export default function HowItWorks() {
         </div>
 
         {/* CTA */}
-        <div className="text-center">
-          <button className="bg-maroon text-white font-sans font-medium px-7 py-3.5 rounded-full border-2 border-maroon hover:bg-transparent hover:text-maroon transition-colors text-sm">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
+          className="text-center"
+        >
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            className="bg-maroon text-white font-sans font-medium px-7 py-3.5 rounded-full border-2 border-maroon hover:bg-transparent hover:text-maroon transition-colors text-sm"
+          >
             Find your next talents
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       </div>
     </section>
   );

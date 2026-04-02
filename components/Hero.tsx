@@ -1,5 +1,7 @@
 "use client";
 
+import { motion } from "framer-motion";
+
 const talentCards = [
   {
     id: 1,
@@ -137,25 +139,50 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
         {/* Left — copy */}
         <div className="max-w-lg py-20 pt-32 flex flex-col items-center md:items-start">
-          <span className="inline-block font-sans text-xs font-semibold tracking-widest text-[#DC516B] uppercase mb-6">
+          <motion.span
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0 }}
+            className="inline-block font-sans text-xs font-semibold tracking-widest text-[#DC516B] uppercase mb-6"
+          >
             Curated Creative Talent
-          </span>
-          <h1 className="font-editorial text-4xl lg:text-6xl font-normal text-gray-900 leading-tight tracking-tight mb-6">
+          </motion.span>
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-editorial text-4xl lg:text-6xl font-normal text-gray-900 leading-tight tracking-tight mb-6"
+          >
             Hire the{" "}
             <span className="font-script text-rose italic">Talent</span> you
             need.
-          </h1>
-          <p className="font-sans text-base text-gray-600 leading-relaxed mb-10">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="font-sans text-base text-gray-600 leading-relaxed mb-10"
+          >
             A curated marketplace of the six creative roles every early-stage
             founder needs. Vetted talent. No noise. Just the right hire.
-          </p>
-          <button className="bg-maroon text-white font-sans font-medium px-7 py-3.5 rounded-full hover:bg-maroon/90 transition-colors text-sm">
+          </motion.p>
+          <motion.button
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            className="bg-maroon text-white font-sans font-medium px-7 py-3.5 rounded-full hover:bg-maroon/90 transition-colors text-sm"
+          >
             Join as a founder
-          </button>
+          </motion.button>
         </div>
 
         {/* Right — scrolling talent cards */}
-        <div
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
           className="flex gap-2 justify-center items-center h-[340px] lg:h-screen"
           style={{
             maskImage:
@@ -171,7 +198,7 @@ export default function Hero() {
             offset={true}
             className=""
           />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

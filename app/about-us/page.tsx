@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import FadeIn from "@/components/FadeIn";
 
 export default function AboutPage() {
   return (
@@ -10,21 +11,21 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="bg-cream pt-40 pb-20 px-6">
         <div className="max-w-5xl mx-auto">
-          <h1 className="font-editorial text-4xl sm:text-5xl lg:text-7xl text-gray-900 text-center leading-tight tracking-tight">
-            We&apos;re on a mission to{" "}
-            <span className="font-script italic text-rose">empower</span>{" "}
-            early stage founders with the talents they deserve.
-          </h1>
+          <FadeIn>
+            <h1 className="font-editorial text-4xl sm:text-5xl lg:text-7xl text-gray-900 text-center leading-tight tracking-tight">
+              We&apos;re on a mission to{" "}
+              <span className="font-script italic text-rose">empower</span>{" "}
+              early stage founders with the talents they deserve.
+            </h1>
+          </FadeIn>
         </div>
       </section>
-
-
 
       {/* Bio section */}
       <section className="bg-maroon py-24 px-6">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Photo card */}
-          <div className="flex justify-center">
+          <FadeIn delay={0.05} className="flex justify-center">
             <div className="relative w-72 sm:w-80">
               {/* Decorative frame */}
               <div className="absolute -top-3 -left-3 w-full h-full border-2 border-white/20 rounded-xl" />
@@ -41,12 +42,12 @@ export default function AboutPage() {
                 </div>
               </div>
             </div>
-          </div>
+          </FadeIn>
 
           {/* Bio text */}
-          <div className="text-white">
+          <FadeIn delay={0.15} className="text-white">
             <h2 className="font-editorial text-5xl lg:text-6xl mb-6 leading-tight">
-              Hi, I&apos;m 
+              Hi, I&apos;m{" "}
               <span className="font-script italic text-rose">Chidera!</span>
             </h2>
             <div className="space-y-4 font-sans text-sm text-white/80 leading-relaxed max-w-md">
@@ -69,7 +70,7 @@ export default function AboutPage() {
                 finding and vetting the best so you don&apos;t have to.
               </p>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
 

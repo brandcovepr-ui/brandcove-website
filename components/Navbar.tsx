@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
   { label: "For talents", href: "/creatives" },
@@ -13,7 +14,12 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-4 left-0 right-0 z-50 px-4 lg:px-8">
+    <motion.nav
+      initial={{ opacity: 0, y: -16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="fixed top-4 left-0 right-0 z-50 px-4 lg:px-8"
+    >
       <div className="max-w-7xl mx-auto bg-[#FFFFFF] rounded-xl shadow-md px-6">
         {/* Main bar */}
         <div className="h-14 flex items-center justify-between">
@@ -37,9 +43,13 @@ export default function Navbar() {
 
           <div className="flex items-center gap-3">
             {/* CTA — desktop only */}
-            <button className="hidden md:block bg-maroon text-white font-sans text-sm font-medium px-5 py-2.5 rounded-full hover:bg-maroon/90 transition-colors">
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className="hidden md:block bg-maroon text-white font-sans text-sm font-medium px-5 py-2.5 rounded-full hover:bg-maroon/90 transition-colors"
+            >
               Get started
-            </button>
+            </motion.button>
 
             {/* Hamburger — mobile only */}
             <button
@@ -67,26 +77,36 @@ export default function Navbar() {
         </div>
 
         {/* Mobile menu */}
-        {open && (
-          <div className="md:hidden border-t border-gray-200 py-4 flex flex-col gap-1">
-            {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="font-sans text-sm text-black/70 hover:text-black transition-colors px-2 py-2.5 rounded-lg hover:bg-gray-100"
-              >
-                {l.label}
-              </a>
-            ))}
-            <div className="pt-2">
-              <button className="w-full bg-maroon text-white font-sans text-sm font-medium px-5 py-2.5 rounded-full hover:bg-maroon/90 transition-colors">
-                Get started
-              </button>
-            </div>
-          </div>
-        )}
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
+              className="md:hidden overflow-hidden border-t border-gray-200"
+            >
+              <div className="py-4 flex flex-col gap-1">
+                {links.map((l) => (
+                  <a
+                    key={l.href}
+                    href={l.href}
+                    onClick={() => setOpen(false)}
+                    className="font-sans text-sm text-black/70 hover:text-black transition-colors px-2 py-2.5 rounded-lg hover:bg-gray-100"
+                  >
+                    {l.label}
+                  </a>
+                ))}
+                <div className="pt-2">
+                  <button className="w-full bg-maroon text-white font-sans text-sm font-medium px-5 py-2.5 rounded-full hover:bg-maroon/90 transition-colors">
+                    Get started
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-    </nav>
+    </motion.nav>
   );
 }

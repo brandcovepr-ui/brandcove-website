@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CreativesHero from "@/images/CreativesHero.png";
@@ -19,7 +20,7 @@ const steps = [
     number: "02",
     title: "Get vetted by our team",
     description:
-      "We review every application manually. If you're a fit, you'll hear back within 3 business days.",
+      "We review every application manually. If you're a fit, you'll hear back within 6 business days.",
     rotate: "md:rotate-0",
   },
   {
@@ -64,15 +65,15 @@ const features = [
 const faqs = [
   {
     q: "Is it free to join as a creative?",
-    a: "Yes — applying and maintaining your profile on BrandCove is completely free. We only charge founders.",
+    a: "Applying is free. A small platform fee applies once your application is approved and your profile goes live.",
   },
   {
     q: "How long does the vetting process take?",
-    a: "We aim to review all applications within 3 business days. You'll receive an email either way.",
+    a: "We aim to review all applications within 6 business days. You'll receive an email either way.",
   },
   {
     q: "What roles do you accept?",
-    a: "We currently accept Operations Managers, Social Media Managers, Web Designers, Customer Service Specialists, Sales Representatives, and Creative Assistants.",
+    a: "We currently accept Graphic designers, social media managers, operations managers, customer service specialists, marketing associates, sales rep",
   },
   {
     q: "Can I be on BrandCove and other platforms?",
@@ -99,10 +100,10 @@ function FAQItem({ q, a }: { q: string; a: string }) {
         <span className="font-editorial text-base lg:text-lg text-gray-900">
           {q}
         </span>
-        <svg
-          className={`shrink-0 text-gray-400 transition-transform duration-300 ${
-            open ? "rotate-180" : ""
-          }`}
+        <motion.svg
+          animate={{ rotate: open ? 180 : 0 }}
+          transition={{ duration: 0.25, ease: "easeInOut" }}
+          className="shrink-0 text-gray-400"
           width="18"
           height="18"
           viewBox="0 0 24 24"
@@ -113,17 +114,23 @@ function FAQItem({ q, a }: { q: string; a: string }) {
           strokeLinejoin="round"
         >
           <polyline points="6 9 12 15 18 9" />
-        </svg>
+        </motion.svg>
       </button>
-      <div
-        className={`overflow-hidden transition-all duration-300 ${
-          open ? "max-h-40 mt-3" : "max-h-0"
-        }`}
-      >
-        <p className="font-sans text-sm text-gray-500 leading-relaxed max-w-2xl">
-          {a}
-        </p>
-      </div>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <p className="font-sans text-sm text-gray-500 leading-relaxed max-w-2xl mt-3">
+              {a}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -138,27 +145,53 @@ export default function CreativesPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-0 md:gap-12 items-stretch mt-24">
           {/* Left */}
           <div className="max-w-lg pt-4 md:pt-0 py-0 md:py-10 md:py-32 flex flex-col items-center md:items-start text-center md:text-left justify-center">
-            <span className="inline-block font-sans text-center md:text-left text-xs font-semibold tracking-widest text-maroon/60 uppercase mb-6 w-fit">
+            <motion.span
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0 }}
+              className="inline-block font-sans text-center md:text-left text-xs font-semibold tracking-widest text-maroon/60 uppercase mb-6 w-fit"
+            >
               For Creatives
-            </span>
-            <h1 className="font-editorial text-center md:text-left text-4xl lg:text-6xl font-normal text-black leading-tight">
-              Get{" "}
-              <span className="font-script text-rose italic">Paid</span>
-            </h1>
-            <h1 className="font-editorial text-4xl lg:text-6xl font-normal text-black leading-tight mb-6">
-              to create your way.
-            </h1>
-            <p className="font-sans text-base text-black/70 leading-relaxed mb-10">
+            </motion.span>
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <h1 className="font-editorial text-center md:text-left text-4xl lg:text-6xl font-normal text-black mb-4 leading-tight">
+                Your <span className="font-script text-rose italic">skills.</span> 
+                Your <span className="font-script text-rose italic">terms.</span> 
+                Your next <span className="font-script text-rose italic">big client.</span>
+              </h1>
+            </motion.div>
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="font-sans text-base text-black/70 leading-relaxed mb-10"
+            >
               Join a curated network of creative talent. No bidding wars, no
               chasing invoices — just founders who need exactly what you do.
-            </p>
-            <button className="bg-maroon text-cream font-sans font-medium px-7 py-3.5 rounded-full hover:bg-maroon/90 transition-colors text-sm w-fit">
+            </motion.p>
+            <motion.button
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-maroon text-cream font-sans font-medium px-7 py-3.5 rounded-full hover:bg-maroon/90 transition-colors text-sm w-fit"
+            >
               Apply to join
-            </button>
+            </motion.button>
           </div>
 
           {/* Right — hero image */}
-          <div className="flex items-center justify-center pt-0 md:pt-8 md:pt-28 lg:pt-0">
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+            className="flex items-center justify-center pt-0 md:pt-8 md:pt-28 lg:pt-0"
+          >
             <div className="relative w-full max-w-[480px] h-[480px] lg:h-[560px]">
               <Image
                 src={CreativesHero}
@@ -168,14 +201,20 @@ export default function CreativesPage() {
                 priority
               />
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* ── From apply to hired ──────────────────────────────────────────── */}
       <section className="bg-cream pb-28">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center flex-col">
-          <div className="mb-20 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="mb-20 text-center"
+          >
             <span className="font-sans text-xs font-semibold tracking-widest text-maroon/60 uppercase">
               The Process
             </span>
@@ -183,7 +222,7 @@ export default function CreativesPage() {
               From apply to{" "}
               <span className="font-script text-rose italic">hired.</span>
             </h2>
-          </div>
+          </motion.div>
 
           <div className="flex flex-col items-center md:flex-row md:items-center md:justify-center mb-16 relative gap-6 md:gap-0">
             {steps.map((step, index) => (
@@ -207,11 +246,20 @@ export default function CreativesPage() {
             ))}
           </div>
 
-          <div>
-            <button className="bg-maroon text-white font-sans font-medium px-7 py-3.5 rounded-full border-2 border-maroon hover:bg-transparent hover:text-maroon transition-colors text-sm">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
+          >
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-maroon text-white font-sans font-medium px-7 py-3.5 rounded-full border-2 border-maroon hover:bg-transparent hover:text-maroon transition-colors text-sm"
+            >
               Find your next role
-            </button>
-          </div>
+            </motion.button>
+          </motion.div>
         </div>
       </section>
 
@@ -222,23 +270,34 @@ export default function CreativesPage() {
             {/* Left — sticky heading */}
             <div className="lg:w-80 shrink-0">
               <div className="lg:sticky lg:top-32">
-                <span className="font-sans text-xs font-semibold tracking-widest text-cream/60 uppercase">
-                  Why BrandCove
-                </span>
-                <h2 className="font-editorial text-4xl lg:text-5xl font-normal text-white mt-2 whitespace-nowrap">
-                  Built for{" "}
-                  <span className="font-script text-rose italic">
-                    Creatives.
+                <motion.div
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                >
+                  <span className="font-sans text-xs font-semibold tracking-widest text-cream/60 uppercase">
+                    Why BrandCove
                   </span>
-                </h2>
+                  <h2 className="font-editorial text-4xl lg:text-5xl font-normal text-white mt-2 whitespace-nowrap">
+                    Built for{" "}
+                    <span className="font-script text-rose italic">
+                      Creatives.
+                    </span>
+                  </h2>
+                </motion.div>
               </div>
             </div>
 
             {/* Right — stacked feature cards */}
             <div className="flex-1 flex flex-col gap-4">
-              {features.map((f) => (
-                <div
+              {features.map((f, index) => (
+                <motion.div
                   key={f.title}
+                  initial={{ opacity: 0, x: 24 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.08 }}
                   className="bg-white border-2 border-dashed border-maroon/40 rounded-2xl px-8 py-6"
                 >
                   <h3 className="font-editorial text-xl text-gray-900 mb-2">
@@ -247,7 +306,7 @@ export default function CreativesPage() {
                   <p className="font-sans text-sm text-gray-500 leading-relaxed">
                     {f.description}
                   </p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -257,14 +316,20 @@ export default function CreativesPage() {
       {/* ── FAQ ─────────────────────────────────────────────────────────── */}
       <section className="bg-cream py-10">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
-          <div className="mb-12 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="mb-12 text-center"
+          >
             <span className="font-sans text-xs font-semibold tracking-widest text-center text-maroon/60 uppercase">
               Questions
             </span>
             <h2 className="font-editorial text-4xl lg:text-5xl font-normal text-center text-gray-900 mt-2">
               FAQ
             </h2>
-          </div>
+          </motion.div>
 
           <div>
             {faqs.map((item) => (
@@ -277,7 +342,13 @@ export default function CreativesPage() {
       {/* ── CTA ─────────────────────────────────────────────────────────── */}
       <section className="bg-cream py-28">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="bg-steel-blue rounded-3xl px-10 py-20 text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.97, y: 16 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="bg-steel-blue rounded-3xl px-10 py-20 text-center"
+          >
             <h2 className="font-editorial text-4xl lg:text-5xl font-normal text-black max-w-2xl mx-auto leading-tight">
               Let&apos;s find{" "}
             </h2>
@@ -288,10 +359,14 @@ export default function CreativesPage() {
             <p className="font-sans text-sm text-black/60 leading-relaxed mb-10">
               Explore a wide range of opportunities now available
             </p>
-            <button className="bg-maroon text-white font-sans font-medium px-8 py-3.5 rounded-full hover:bg-maroon/90 transition-colors text-sm">
+            <motion.button
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+              className="bg-maroon text-white font-sans font-medium px-8 py-3.5 rounded-full hover:bg-maroon/90 transition-colors text-sm"
+            >
               Get started
-            </button>
-          </div>
+            </motion.button>
+          </motion.div>
         </div>
       </section>
 

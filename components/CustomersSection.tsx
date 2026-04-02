@@ -1,34 +1,32 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 const testimonials = [
   {
     id: 1,
     quote:
-      "Your problem was never meant to create financial instability. Provide your solution without breaking the bank.",
-    name: "Funke Lawal",
-    handle: "@funkelawal",
-    role: "Founder, Oore Studio",
+      "BrandCove helped us place a creative strategist who completely transformed our brand visibility within 60 days.",
+    role: "Founder, Fashion brand: HUNI",
     bg: "bg-amber-100",
-    initials: "FL",
+    initials: "FH",
   },
   {
     id: 2,
     quote:
-      "Imagine a solution without breaking the bank. Well, imagine no more — BrandCove does just that.",
-    name: "Funke Lawal",
-    handle: "@funkelawal",
-    role: "Founder, Oore Studio",
+      "From PR strategy to content execution, the team they connected us with understood our brand from day one.",
+    role: "Marketing Lead, GOMONEY",
     bg: "bg-rose-100",
-    initials: "FL",
+    initials: "GM",
     featured: true,
   },
   {
     id: 3,
     quote:
-      "Your problem was never meant to create financial instability. Provide your solution without breaking the bank.",
-    name: "Funke Lawal",
-    handle: "@funkelawal",
-    role: "Founder, Oore Studio",
+      "Honestly, the easiest hire I've ever made. The platform made the whole process seamless; I found someone in under two weeks."  ,
+    role: "CEO, IMO HILLS FISHERIES",
     bg: "bg-violet-100",
-    initials: "FL",
+    initials: "IHF",
   },
 ];
 
@@ -37,7 +35,13 @@ export default function CustomersSection() {
     <section className="bg-cream py-28">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mb-12"
+        >
           <span className="font-sans text-xs font-semibold tracking-widest text-[#DC516B] uppercase">
             Customers
           </span>
@@ -46,12 +50,18 @@ export default function CustomersSection() {
             <span className="font-script text-rose italic">love</span>{" "}
             BrandCove.
           </h2>
-        </div>
+        </motion.div>
 
         {/* Testimonial cards — different sizes */}
         <div className="flex flex-col sm:flex-row gap-5 items-stretch">
           {/* Small card */}
-          <div className="flex-none sm:w-[28%] bg-white border border-maroon/30 rounded-2xl p-6 flex flex-col justify-between gap-8 shadow-sm">
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0 }}
+            className="flex-none sm:w-[28%] bg-white border border-maroon/30 rounded-2xl p-6 flex flex-col justify-between gap-8 shadow-sm"
+          >
             <p className="font-sans text-sm text-gray-600 leading-relaxed">
               {testimonials[0].quote}
             </p>
@@ -63,39 +73,41 @@ export default function CustomersSection() {
                   {testimonials[0].initials}
                 </span>
               </div>
-              <div>
-                <p className="font-sans text-sm font-semibold text-gray-900 leading-tight">
-                  {testimonials[0].name}
-                </p>
-                <p className="font-sans text-xs text-gray-400">{testimonials[0].handle}</p>
-              </div>
+              <span className="font-sans text-xs text-gray-500">{testimonials[0].role}</span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Featured large card */}
-          <div className="flex-1 bg-white border border-maroon/40 rounded-2xl p-10 flex flex-col justify-between gap-10 shadow-xl">
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.12 }}
+            className="flex-1 bg-white border border-maroon/40 rounded-2xl p-10 flex flex-col justify-between gap-10 shadow-xl"
+          >
             <p className="font-sans text-base text-gray-700 leading-relaxed">
               {testimonials[1].quote}
             </p>
             <div className="flex items-center gap-3">
               <div
-                className={`w-11 h-11 rounded-full ${testimonials[1].bg} flex items-center justify-center shrink-0`}
+                className={`w-9 h-9 rounded-full ${testimonials[1].bg} flex items-center justify-center shrink-0`}
               >
-                <span className="font-serif text-sm font-bold text-gray-500">
+                <span className="font-serif text-xs font-bold text-gray-500">
                   {testimonials[1].initials}
                 </span>
               </div>
-              <div>
-                <p className="font-sans text-sm font-semibold text-gray-900 leading-tight">
-                  {testimonials[1].name}
-                </p>
-                <p className="font-sans text-xs text-gray-400">{testimonials[1].handle}</p>
-              </div>
+              <span className="font-sans text-xs text-gray-500">{testimonials[1].role}</span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Medium card */}
-          <div className="flex-none sm:w-[28%] bg-white border border-maroon/30 rounded-2xl p-6 flex flex-col justify-between gap-8 shadow-md">
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.24 }}
+            className="flex-none sm:w-[28%] bg-white border border-maroon/30 rounded-2xl p-6 flex flex-col justify-between gap-8 shadow-md"
+          >
             <p className="font-sans text-sm text-gray-600 leading-relaxed">
               {testimonials[2].quote}
             </p>
@@ -107,14 +119,9 @@ export default function CustomersSection() {
                   {testimonials[2].initials}
                 </span>
               </div>
-              <div>
-                <p className="font-sans text-sm font-semibold text-gray-900 leading-tight">
-                  {testimonials[2].name}
-                </p>
-                <p className="font-sans text-xs text-gray-400">{testimonials[2].handle}</p>
-              </div>
+              <span className="font-sans text-xs text-gray-500">{testimonials[2].role}</span>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
